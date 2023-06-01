@@ -1,6 +1,8 @@
 # task_scheduler
 
-Just making this project for fun, trying to see how far I can get without having to refer to someone elses python project
+Just making this project for fun, using this project to learn as much as possible.
+
+Looking forward to the learning process, and all of the lessons that come along with it.
 
 once this terminal project is done I'm going to make a GUI version to continue to test myself
 
