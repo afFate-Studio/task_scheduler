@@ -16,35 +16,22 @@ class Task:
 
     # sets completion status of a task
     def complete_task(self,ans):
-        if ans == 'Y' or ans == 'y' or ans == 'Yes' or ans == 'yes':
+        if ans in ('Y', 'y', 'Yes', 'yes'):
             self.completed = 'Y'
-        elif ans == 'N' or ans == 'n' or ans == 'No' or ans == 'no':
-            self.completed = 'N'
         else:
-            return "Invalid selection, please type Y or N"
+            self.completed = 'N'
     
     #TODO reminders function - to actually send out a reminder 
-    def set_reminder(self,ans):
-        test_case = ['y','Y','yes','n','N','no']
-        for i in test_case:
-            if ans != i:
-                return "Invalid selection, please type Y or N"
-            else:
-                break
-            
-        if ans == 'Y' or ans == 'y' or ans == 'Yes' or ans == 'yes':
+    def set_reminder(self,ans):           
+        if ans in ('Y', 'y', 'Yes', 'yes'):
             self.reminder = 'Y'
             # TODO ask when to be reminded week/day/hour/miniute
-        elif ans == 'N' or ans == 'n' or ans == 'No' or ans == 'no':
+        else:
             self.reminder = 'N'
         
     # sets priority of a task
     def set_priority(self,ans):
-        priority = [0,1,2]
-        for i in priority:
-            if ans == i:
-                self.priority = i    
-        return "Invalid selections, please type 0 - 2, 0 being lowest priority 2 being highest priority"
+            self.priority = ans
 
     # sets the comments for a task
     def set_comment(self,comments):
