@@ -1,5 +1,4 @@
 # this program is used to keep track of tasks I need to complete
-from os import path
 from tasks import Task
 from emailer import Emailer
 from load import File_Handling
@@ -21,22 +20,6 @@ def email_list(task):
     app_password = input("Please provide your gmail app password: ")    # take the users gmail app password
     reciever_email = input("Please provide the recievers email address ( ex. reciever@mail.com ): ") # take the email they wish to send the task to
     Emailer(sender_email, app_password, reciever_email, task)   # pass the variables into the Emailer class
-
-
-# TODO move this to load.py
-def get_file():
-    file_name = input("Please enter the full file path including the extension. ex. test.txt : ")
-    while True:
-        if path.exists(file_name):
-            return file_name
-        else:
-            response = input("Invalid response would you like to try again ( Y | N ) : ")
-            check_response(response)
-            if response in ('Y','y','Yes','yes'):
-                file_name = input("Please enter the file path : ")
-            else:
-                file_name = ""
-                return file_name
 
 # gets all of the task info from the user, appends it to a list then returns the list
 def get_task_info():
@@ -75,21 +58,17 @@ def set_task(task_info):
 
     return task # return the task object
 
-# error checking print function
-"""
-#def print_task(tasks):
-#    print('\n')
-#    for i in tasks:
-#        print(i)
-    """
-
 def main():
     tasks = [] # empty list for task objects to be appended to
 
     response = input("Do you have a list file you would like to add to? ( Y | N ) : ")
     check_response(response)
     if response in ('Y','y','Yes','yes'):
-        file_name = get_file()
+        file_name = input("Please enter the full file path : ")
+        f = File_Handling(file_name)
+        f.handling()
+    else:
+        file_name = ""
 
     while True:
 
@@ -112,10 +91,10 @@ def main():
                 if file_name == "":
                     file_name = input("Please enter a file name you would like: ")
                     f = File_Handling(file_name, tasks)
-                    f.handling()
+                    f.saving()
                 else:
                     f = File_Handling(file_name, tasks)
-                    f.handling()
+                    f.saving()
             else:
                 print("You chose to not save your task list to a file.")
 
