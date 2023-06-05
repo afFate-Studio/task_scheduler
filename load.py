@@ -9,7 +9,18 @@ class File_Handling:
     def handling(self):
         try:
             with open(self.file_name, "a") as f:
-                f.write(self.task)
+                for tasks in self.task:
+                    f.write("Task Name : ")
+                    f.write(tasks.task)
+                    f.write("\nTask Completed Y/N : ")
+                    f.write(tasks.completed)
+                    f.write("\nReminder Y/N : ")
+                    f.write(tasks.reminder)
+                    f.write("\nTask Priority (0 - 3) : ")
+                    f.write(str(tasks.priority))
+                    f.write("\nComments : ")
+                    f.write(tasks.comments)
+                    f.write("\n\n")
                 f.close()
         except FileNotFoundError:
             while True:

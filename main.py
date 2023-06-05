@@ -92,12 +92,14 @@ def main():
                 email_list(task) # checks response and sends on doesn't send email based on the response
             else:
                 print("Task list will not be emailed")   # if the user picks No, tell the user the list will not be emailed
-                save_response = input("\nWould you like to save your task list to a file ( Y | N ): ")
-                if save_response in ('Y','y','Yes','yes'):
-                    file_name = input("Please enter a file name you would like: ")
-                    File_Handling(file_name, tasks)
-                else:
-                    print("You chose to not save your task list to a file.")
+            
+            save_response = input("\nWould you like to save your task list to a file ( Y | N ): ")
+            if save_response in ('Y','y','Yes','yes'):
+                file_name = input("Please enter a file name you would like: ")
+                f = File_Handling(file_name, tasks)
+                f.handling()
+            else:
+                print("You chose to not save your task list to a file.")
                     
 
         
