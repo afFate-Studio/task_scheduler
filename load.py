@@ -2,7 +2,7 @@
 # in order to save tasks as an actual list that a user can refer to
 # as well as email the list as a pdf or txt
 class File_Handling:
-    def __init__(self, file_name, task):
+    def __init__(self, file_name, task=[]):
         self.file_name = file_name
         self.task = task
 
@@ -40,4 +40,3 @@ class File_Handling:
                     response = input("Please enter a valid selection ( Y | N ): ")  # otherwise prompts user to input a new response then checks new response
                 except ValueError:
                     pass
-                

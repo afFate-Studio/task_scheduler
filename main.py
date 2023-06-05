@@ -59,15 +59,27 @@ def set_task(task_info):
 
     return task # return the task object
 
-def print_task(tasks):
-    print('\n')
-    for i in tasks:
-        print(i)
-    
+# error checking print function
+"""
+#def print_task(tasks):
+#    print('\n')
+#    for i in tasks:
+#        print(i)
+    """
 
 def main():
     tasks = [] # empty list for task objects to be appended to
-    
+
+    response = input("Do you have a list file you would like to add to? ( Y | N ) : ")
+    check_response(response)
+    if response in ('Y','y','Yes','yes'):
+        try:
+            file_name = input("Please enter the full file path including the extension. ex. test.txt : ")
+            f = open(file_name, "r")
+            f.read()
+        except: 
+            pass
+
     while True:
 
         task_info = get_task_info() # gets all tasks info (name, completion status, reminder, priority, comment) then stores it into a variable
@@ -75,31 +87,33 @@ def main():
 
         tasks.append(task) # appending the task object with the user provided data
 
-        print_task(tasks) # prints the tasks
-
         # Ask user if they would like to add another task, if not ask if they would like to email the list
-        answer = input("\nWould you like to enter another task ( Y | N ): ")
-        check_response(answer) # check for valid response
+        response = input("\nWould you like to enter another task ( Y | N ): ")
+        check_response(response) # check for valid response
         
         # checks user response to if they wish to continue, if yes loop will continue otherwise user will be asked if they would like to email their list
         # and loop will end
-        if answer in ('Y', 'y', 'Yes', 'yes'):
+        if response in ('Y', 'y', 'Yes', 'yes'):
             continue
         else:
+            response = input("\nWould you like to save your task list to a file ( Y | N ): ")
+            if response in ('Y','y','Yes','yes'):
+                if not file_name:
+                    file_name = input("Please enter a file name you would like: ")
+                    f = File_Handling(file_name, tasks)
+                    f.handling()
+                else:
+                    f = File_Handling(file_name, tasks)
+                    f.handling()
+            else:
+                print("You chose to not save your task list to a file.")
+
             response = input("\nWould you like to email your task list ( Y | N ): ") # prompts user asking if they would like to email their task list
             check_response(response)    # checks user response
             if response in ('Y', 'y', 'Yes', 'yes'):
                 email_list(task) # checks response and sends on doesn't send email based on the response
             else:
                 print("Task list will not be emailed")   # if the user picks No, tell the user the list will not be emailed
-            
-            save_response = input("\nWould you like to save your task list to a file ( Y | N ): ")
-            if save_response in ('Y','y','Yes','yes'):
-                file_name = input("Please enter a file name you would like: ")
-                f = File_Handling(file_name, tasks)
-                f.handling()
-            else:
-                print("You chose to not save your task list to a file.")
                     
 
         
