@@ -2,6 +2,7 @@
 from tasks import Task
 from emailer import Emailer
 from load import File_Handling
+import os
 
 # function used to check the response from the user to make sure it is a valid response
 def check_response(response):
@@ -73,12 +74,20 @@ def main():
     response = input("Do you have a list file you would like to add to? ( Y | N ) : ")
     check_response(response)
     if response in ('Y','y','Yes','yes'):
-        try:
-            file_name = input("Please enter the full file path including the extension. ex. test.txt : ")
-            f = open(file_name, "r")
-            f.read()
-        except: 
-            pass
+        file_name = input("Please enter the full file path including the extension. ex. test.txt : ")
+        while True:
+            if os.path.exists(file_name):
+                f = open(file_name, "r")
+                f.read()
+                break
+            else:
+                response = input("Invalid response would you like to try again ( Y | N ) : ")
+                check_response(response)
+                if response in ('Y','y','Yes','yes'):
+                    file_name = input("Please enter the file path : ")
+                else:
+                    file_name = ""
+                    break
 
     while True:
 
@@ -98,7 +107,7 @@ def main():
         else:
             response = input("\nWould you like to save your task list to a file ( Y | N ): ")
             if response in ('Y','y','Yes','yes'):
-                if not file_name:
+                if file_name == "":
                     file_name = input("Please enter a file name you would like: ")
                     f = File_Handling(file_name, tasks)
                     f.handling()
