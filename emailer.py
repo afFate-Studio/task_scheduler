@@ -4,16 +4,16 @@ import smtplib
 class Emailer:
 
     # initializes variables
-    def __init__(self, sender, password, reciever, message):
+    def __init__(self, sender, password, receiver, message):
         self.sender = sender
         self.password = password
-        self.reciever = reciever
+        self.receiver = receiver
         self.message = message
 
     # sends email using smtp, requires a sender email, app password, recieving email
-    def send_mail(sender, password, receiver, message):
+    def send_mail(self):
         server = smtplib.SMTP("smtp.gmail.com", 587)
         server.starttls()
-        server.login(sender, password)
-        server.sendmail(sender, receiver, message)
+        server.login(self.sender, self.password)
+        server.sendmail(self.sender, self.receiver, self.message)
         server.quit()

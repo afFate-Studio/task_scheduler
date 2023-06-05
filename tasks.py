@@ -1,4 +1,3 @@
-
 # class used to set a task based on information passed on by user
 class Task:
 
