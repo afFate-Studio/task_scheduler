@@ -1,8 +1,8 @@
 # this program is used to keep track of tasks I need to complete
+from os import path
 from tasks import Task
 from emailer import Emailer
 from load import File_Handling
-import os
 
 # function used to check the response from the user to make sure it is a valid response
 def check_response(response):
@@ -23,10 +23,11 @@ def email_list(task):
     Emailer(sender_email, app_password, reciever_email, task)   # pass the variables into the Emailer class
 
 
+# TODO move this to load.py
 def get_file():
     file_name = input("Please enter the full file path including the extension. ex. test.txt : ")
     while True:
-        if os.path.exists(file_name):
+        if path.exists(file_name):
             return file_name
         else:
             response = input("Invalid response would you like to try again ( Y | N ) : ")
