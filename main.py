@@ -23,6 +23,20 @@ def email_list(task):
     Emailer(sender_email, app_password, reciever_email, task)   # pass the variables into the Emailer class
 
 
+def get_file():
+    file_name = input("Please enter the full file path including the extension. ex. test.txt : ")
+    while True:
+        if os.path.exists(file_name):
+            return file_name
+        else:
+            response = input("Invalid response would you like to try again ( Y | N ) : ")
+            check_response(response)
+            if response in ('Y','y','Yes','yes'):
+                file_name = input("Please enter the file path : ")
+            else:
+                file_name = ""
+                return file_name
+
 # gets all of the task info from the user, appends it to a list then returns the list
 def get_task_info():
     # empty list for task info
@@ -74,20 +88,7 @@ def main():
     response = input("Do you have a list file you would like to add to? ( Y | N ) : ")
     check_response(response)
     if response in ('Y','y','Yes','yes'):
-        file_name = input("Please enter the full file path including the extension. ex. test.txt : ")
-        while True:
-            if os.path.exists(file_name):
-                f = open(file_name, "r")
-                f.read()
-                break
-            else:
-                response = input("Invalid response would you like to try again ( Y | N ) : ")
-                check_response(response)
-                if response in ('Y','y','Yes','yes'):
-                    file_name = input("Please enter the file path : ")
-                else:
-                    file_name = ""
-                    break
+        file_name = get_file()
 
     while True:
 
