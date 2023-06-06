@@ -16,3 +16,9 @@ Reminder Y/N : y
 Task Priority (0 - 3) : 1
 Comments : sonda
 
+Task Name : task 1
+Task Completed Y/N : n
+Reminder Y/N : y
+Task Priority (0 - 3) : 0
+Comments : oands
+

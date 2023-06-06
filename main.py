@@ -3,6 +3,7 @@ import pyinputplus as pyip              # module to check user input
 from tasks import Task                  # user made module to set task variables based on user input
 from emailer import Emailer             # user made module to email a task list to an email provided by the user
 from file_handler import File_Handling  # user made module used to load and save to a file
+from reminder import Reminder
 
 # function used to check the response from the user to make sure it is a valid response
 def check_response(response):
@@ -28,7 +29,7 @@ def get_reminder_time():
         weeks = pyip.inputNum("In how many weeks would you like to be reminded : ", min = 0, max = 51)
         days = pyip.inputNum("In how many days would you like to be reminded : ", min = 0, max = 6)
         reminder_time = pyip.inputTime("How often would you like to be reminded, max value is 23:59:59 : ", formats = ("%H:%M:%S", "%H:%M", "%X"))
-        remind_info = [weeks, days, reminder_time.hour, reminder_time.minute, reminder_time.second]
+        remind_info = [weeks, days, int(reminder_time.hour), int(reminder_time.minute), int(reminder_time.second)]
         return remind_info
 
 # gets all of the task info from the user, appends it to a list then returns the list
@@ -49,7 +50,9 @@ def get_task_info():
     for i in ('Y','y','Yes','yes'): # loop through responses
         if checked_reminder_status == i:    # check response against loop
             remind_info = get_reminder_time()   # get user variables for reminder information
-            # TODO finish reminder functionality
+            week, day, hour, minute, second = remind_info[0], remind_info[1], remind_info[2], remind_info[3], remind_info[4]
+            Reminder(task_name, week, day, hour, minute, second)
+            break
 
     # Checks response for task_priority, appends the result if correct, otherwise prompts user for correct response
     while True:
