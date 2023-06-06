@@ -2,6 +2,7 @@
 # in order to save tasks as an actual list that a user can refer to
 # as well as email the list as a pdf or txt
 from os import path
+import pyinputplus as pyip
 
 class File_Handling:
     def __init__(self, file_name, task=[]):
@@ -20,7 +21,7 @@ class File_Handling:
                         if response in ('Y','y','Yes','yes','N','n','No','no'):   # if valid response, ends loop and returns response
                             break
                         else:
-                            response = input("Please enter a valid selection ( Y | N ): ")  # otherwise prompts user to input a new response then checks new response
+                            response = pyip.inputStr("Please enter a valid selection ( Y | N ): ")  # otherwise prompts user to input a new response then checks new response
                     
                     if response in ('Y','y','Yes','yes'):
                         f = open(self.file_name, "x")
