@@ -2,9 +2,10 @@ import pyinputplus as pyip
 
 # function used to check the response from the user to make sure it is a valid response
 def check_response(response):
+    RESPONSES = ['Y','y','Yes','yes','N','n','No','no']
     while True:
         try:
-            for i in ('Y', 'y', 'Yes', 'yes', 'N', 'n', 'No', 'no'):
+            for i in RESPONSES:
                 if response == i:   # if valid response, ends loop and returns response
                     return response
             raise ValueError        

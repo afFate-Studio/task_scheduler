@@ -12,6 +12,7 @@ class FileHandling:
         self.task = task
 
     def handling(self):
+        RESPONSES = ['Y','y','Yes','yes','N','n','No','no']
         try:
             if not path.exists(self.file_name):
                 raise FileNotFoundError
@@ -20,12 +21,12 @@ class FileHandling:
                 try:
                     response = input("File not found, would you like to create a new file with the name " + self.file_name + " Y | N: ")
                     for i in range(8):
-                        if response in ('Y','y','Yes','yes','N','n','No','no'):   # if valid response, ends loop and returns response
+                        if response in RESPONSES:   # if valid response, ends loop and returns response
                             break
                         else:
                             response = pyip.inputStr("Please enter a valid selection ( Y | N ): ")  # otherwise prompts user to input a new response then checks new response
                     
-                    if response in ('Y','y','Yes','yes'):
+                    if response in RESPONSES[0:3]:
                         f = open(self.file_name, "x")
                         f.close()
                         break

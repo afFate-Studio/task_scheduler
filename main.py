@@ -10,7 +10,7 @@ from set_task import *                  # module used to set the task informatio
 
 def main():
     tasks = [] # empty list for task objects to be appended to
-
+    RESPONSES = ['Y','y','Yes','yes']   # constant it iterate through to check for a positive response
     """
         Asks user if they have a list already made that they would like to add to
         Then checks the response to make sure it is a valid response
@@ -20,7 +20,7 @@ def main():
     """
     response = pyip.inputStr("Do you have a list file you would like to add to? ( Y | N ) : ")
     response = check_response(response) # checks for valid response
-    if response in ('Y','y','Yes','yes'):
+    if response in RESPONSES:
         file_name = pyip.inputFilepath("Please enter the full file path : ")
         f = FileHandling(file_name)    # tasks file path and sets the variable
         f.handling()    # checks if file exists, if it doesn't exists prompts user to make the file
@@ -48,13 +48,13 @@ def main():
         response = pyip.inputStr("\nWould you like to enter another task ( Y | N ): ")
         response = check_response(response) # check for valid response
         
-        if response in ('Y', 'y', 'Yes', 'yes'):
+        if response in RESPONSES:
             continue
         else:
             if file_name == "":
                 response = pyip.inputStr("\nWould you like to save your task list to a file ( Y | N ): ")
                 response = check_response(response)
-                if response in ('Y','y','Yes','yes'):
+                if response in RESPONSES:
                         file_name = pyip.inputFilepath("Please enter a file name you would like: ")
                         f = FileHandling(file_name, tasks)
                         f.saving()
@@ -63,7 +63,7 @@ def main():
             else:
                 response = pyip.inputStr("\nWould you like to save the new tasks to the file you provided? ( Y | N ): ")
                 response = check_response(response)
-                if response in ('Y','y','Yes','yes'):
+                if response in RESPONSES:
                     f = FileHandling(file_name, tasks)
                     f.saving()
                 else:
@@ -75,7 +75,7 @@ def main():
             """
             response = pyip.inputStr("\nWould you like to email your task list ( Y | N ): ") # prompts user asking if they would like to email their task list
             response = check_response(response)    # checks user response
-            if response in ('Y', 'y', 'Yes', 'yes'):
+            if response in RESPONSES:
                 Emailer(task) # checks response and sends on doesn't send email based on the response
             else:
                 print("Task list will not be emailed")   # if the user picks No, tell the user the list will not be emailed

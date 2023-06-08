@@ -6,6 +6,7 @@ from reminder import *
 def get_task_info():
     # empty list for task info
     task_info = []
+    RESPONSES = ['Y','y','Yes','yes']
       
     task_name = pyip.inputStr("\nEnter the task name: ") # get task name from user
     task_info.append(task_name) # append task name to task_info list
@@ -17,7 +18,7 @@ def get_task_info():
     task_reminder_status = pyip.inputStr("Enter if you would like a reminder to be sent ( Y | N ): ") # get task reminder status from user
     checked_reminder_status = check_response(task_reminder_status)  # check for valid response
     task_info.append(checked_reminder_status)   # append response to task_info list
-    for i in ('Y','y','Yes','yes'): # loop through responses
+    for i in RESPONSES: # loop through responses
         if checked_reminder_status == i:    # check response against loop
             Reminder(task_name).get_reminder_time()   # get user variables for reminder information
             break
