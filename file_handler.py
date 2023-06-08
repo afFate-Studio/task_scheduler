@@ -1,10 +1,12 @@
-# class used to save and write to files
-# in order to save tasks as an actual list that a user can refer to
-# as well as email the list as a pdf or txt
 from os import path
 import pyinputplus as pyip
 
-class File_Handling:
+class FileHandling:
+    """
+        class used to save and write to files
+        in order to save tasks as an actual list that a user can refer to
+        as well as email the list as a pdf or txt
+    """
     def __init__(self, file_name, task=[]):
         self.file_name = file_name
         self.task = task

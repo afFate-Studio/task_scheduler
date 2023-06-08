@@ -15,14 +15,14 @@ def main():
         Asks user if they have a list already made that they would like to add to
         Then checks the response to make sure it is a valid response
         Prompts user for the full file path depending on the users answer
-        File_Handling checks the file path, if there is no file found it will prompt the user
+        FileHandling checks the file path, if there is no file found it will prompt the user
         to choose either to create a new file or bypass the upload
     """
     response = pyip.inputStr("Do you have a list file you would like to add to? ( Y | N ) : ")
     response = check_response(response) # checks for valid response
     if response in ('Y','y','Yes','yes'):
         file_name = pyip.inputFilepath("Please enter the full file path : ")
-        f = File_Handling(file_name)    # tasks file path and sets the variable
+        f = FileHandling(file_name)    # tasks file path and sets the variable
         f.handling()    # checks if file exists, if it doesn't exists prompts user to make the file
     else:
         file_name = ""  # resets file_name to empty string
@@ -56,7 +56,7 @@ def main():
                 response = check_response(response)
                 if response in ('Y','y','Yes','yes'):
                         file_name = pyip.inputFilepath("Please enter a file name you would like: ")
-                        f = File_Handling(file_name, tasks)
+                        f = FileHandling(file_name, tasks)
                         f.saving()
                 else:
                     print("You chose to not save your task list to a file.")
@@ -64,7 +64,7 @@ def main():
                 response = pyip.inputStr("\nWould you like to save the new tasks to the file you provided? ( Y | N ): ")
                 response = check_response(response)
                 if response in ('Y','y','Yes','yes'):
-                    f = File_Handling(file_name, tasks)
+                    f = FileHandling(file_name, tasks)
                     f.saving()
                 else:
                     print("You chose not to save your tasks.")
