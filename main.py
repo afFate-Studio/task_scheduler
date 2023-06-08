@@ -10,7 +10,7 @@ from set_task import *                  # module used to set the task informatio
 
 def main():
     tasks = [] # empty list for task objects to be appended to
-    RESPONSES = ['Y','y','Yes','yes']   # constant it iterate through to check for a positive response
+    RESPONSES = ['Y','y','Yes','yes']   # constant to iterate through to check for a positive response
     """
         Asks user if they have a list already made that they would like to add to
         Then checks the response to make sure it is a valid response
