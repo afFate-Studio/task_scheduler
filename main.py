@@ -35,7 +35,9 @@ def main():
         tasks.append(task) # appending the task object with the user provided data
 
         # TODO sort tasks based on priority
-
+        # DEBUG
+        Reminder().job
+        
         """
             Asks user if they would like to continue adding more tasks,
             if yes the loop continues

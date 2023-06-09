@@ -64,3 +64,9 @@ Reminder Y/N : y
 Task Priority (0 - 3) : 1
 Comments : no comments
 
+Task Name : task 1000
+Task Completed Y/N : n
+Reminder Y/N : y
+Task Priority (0 - 3) : 3
+Comments : task testing
+
