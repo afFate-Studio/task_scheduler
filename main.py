@@ -9,7 +9,7 @@ from get_task_info import *             # module used to get the task informatio
 from set_task import *                  # module used to set the task information
 
 def main():
-    tasks = [] # empty list for task objects to be appended to
+    tasks_dict = {} # empty dictionary for task objects to be appended to
     RESPONSES = ['Y','y','Yes','yes']   # constant to iterate through to check for a positive response
     """
         Asks user if they have a list already made that they would like to add to
@@ -30,13 +30,29 @@ def main():
     # loops until user decides they have no more tasks to add
     while True:
 
-        task_info = get_task_info() # gets all tasks info (name, completion status, reminder, priority, comment) then stores it into a variable
-        task = set_task(task_info) # breaks task_info into multiple variables and passes that into the Task object, then returns result and stores into a variable
-        tasks.append(task) # appending the task object with the user provided data
+        task_info_list = get_task_info() # gets all tasks info (name, completion status, reminder, priority, comment) then stores it into a variable
+        task = set_task(task_info_list) # breaks task_info into multiple variables and passes that into the Task object, then returns result and stores into a variable
 
+        if len(tasks_dict) == 0:
+            tasks_dict.update({"Task0" : {"name" : task["name"],
+                                           "completed" : task["completed"],
+                                           "reminder" : task["reminder"],
+                                           "priority" : task["priority"],
+                                           "comments" : task["comments"]
+                                           }})
+        else:
+            NUM = len(tasks_dict)
+            tasks_dict.update({"Task" + str(NUM) : {"name" : task["name"],
+                                                        "completed" : task["completed"],
+                                                        "reminder" : task["reminder"],
+                                                        "priority" : task["priority"],
+                                                        "comments" : task["comments"]
+                                                        }})
+
+        print(tasks_dict)
         # TODO sort tasks based on priority
         # DEBUG
-        Reminder().job
+        #Reminder().job
         
         """
             Asks user if they would like to continue adding more tasks,
@@ -58,7 +74,7 @@ def main():
                 response = check_response(response)
                 if response in RESPONSES:
                         file_name = pyip.inputFilepath("Please enter a file name you would like: ")
-                        f = FileHandling(file_name, tasks)
+                        f = FileHandling(file_name, tasks_dict)
                         f.saving()
                 else:
                     print("You chose to not save your task list to a file.")
@@ -66,7 +82,7 @@ def main():
                 response = pyip.inputStr("\nWould you like to save the new tasks to the file you provided? ( Y | N ): ")
                 response = check_response(response)
                 if response in RESPONSES:
-                    f = FileHandling(file_name, tasks)
+                    f = FileHandling(file_name, tasks_dict)
                     f.saving()
                 else:
                     print("You chose not to save your tasks.")

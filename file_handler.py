@@ -7,7 +7,7 @@ class FileHandling:
         in order to save tasks as an actual list that a user can refer to
         as well as email the list as a pdf or txt
     """
-    def __init__(self, file_name, task=[]):
+    def __init__(self, file_name, task={}):
         self.file_name = file_name
         self.task = task
 
@@ -35,7 +35,8 @@ class FileHandling:
                         return self.file_name
                 except ValueError:
                     pass
-
+    
+    # TODO  Get to work with a dictionary
     def saving(self):
         with open(self.file_name, "a") as f:
             for tasks in self.task:

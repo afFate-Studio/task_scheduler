@@ -10,14 +10,13 @@ from get_reminder_time import *
 # TODO add threading 
 
 class Reminder():
-    def __init__(self, task):
-        remind_time = get_reminder_time()
+    def __init__(self, task, weeks, days, hours, minutes, seconds):
         self.task = task
-        self.weeks = remind_time[0]
-        self.days = remind_time[1]
-        self.hours = remind_time[2]
-        self.minutes = remind_time[3]
-        self.seconds = remind_time[4]
+        self.weeks = weeks
+        self.days = days
+        self.hours = hours
+        self.minutes = minutes
+        self.seconds = seconds
 
     def job(self):
         for task in self.task:
