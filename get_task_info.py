@@ -21,7 +21,7 @@ def get_task_info():
     for i in RESPONSES: # loop through responses
         if checked_reminder_status == i:    # check response against loop
             remind_time = get_reminder_time() 
-            Reminder(task=task_name, weeks=remind_time[0], days=remind_time[1], hours=remind_time[2], minutes=remind_time[3], seconds=remind_time[4])   # get user variables for reminder information
+            task_info.append(remind_time)
             break
 
     # Checks response for task_priority, appends the result if correct, otherwise prompts user for correct response

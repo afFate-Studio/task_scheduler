@@ -31,8 +31,9 @@ def main():
     while True:
 
         task_info_list = get_task_info() # gets all tasks info (name, completion status, reminder, priority, comment) then stores it into a variable
+        reminder_info = task_info_list.pop(3) # tasks the reminder info out of the task_info_list and makes it's own list
         task = set_task(task_info_list) # breaks task_info into multiple variables and passes that into the Task object, then returns result and stores into a variable
-
+        
         if len(tasks_dict) == 0:
             tasks_dict.update({"Task0" : {"name" : task["name"],
                                            "completed" : task["completed"],
@@ -43,16 +44,19 @@ def main():
         else:
             NUM = len(tasks_dict)
             tasks_dict.update({"Task" + str(NUM) : {"name" : task["name"],
-                                                        "completed" : task["completed"],
-                                                        "reminder" : task["reminder"],
-                                                        "priority" : task["priority"],
-                                                        "comments" : task["comments"]
-                                                        }})
+                                                    "completed" : task["completed"],
+                                                    "reminder" : task["reminder"],
+                                                    "priority" : task["priority"],
+                                                    "comments" : task["comments"]
+                                                    }})
 
         print(tasks_dict)
         # TODO sort tasks based on priority
         # DEBUG
-        #Reminder().job
+        # TODO figure out why reminder is always 'n'
+        for i in range(len(tasks_dict)):
+            if tasks_dict["Task" + str(i)]['reminder'] == RESPONSES:
+                Reminder(task=tasks_dict["Task" + str(i)]["name"], weeks=reminder_info[0], days=reminder_info[1], hours=reminder_info[2], minutes=reminder_info[3], seconds=reminder_info[4]).job()
         
         """
             Asks user if they would like to continue adding more tasks,
