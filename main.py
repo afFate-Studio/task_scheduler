@@ -7,6 +7,7 @@ from reminder import *                  # module used to set reminders for tasks
 from check_response import *            # module used to check the responses from the user
 from get_task_info import *             # module used to get the task information from the user
 from set_task import *                  # module used to set the task information
+from sorter import *                    # module used to sort the tasks_dict based on priority
 
 def main():
     tasks_dict = {} # empty dictionary for task objects to be appended to
@@ -35,7 +36,7 @@ def main():
             reminder_info = task_info_list.pop(3) # tasks the reminder info out of the task_info_list and makes it's own list
         task = set_task(task_info_list) # breaks task_info into multiple variables and passes that into the Task object, then returns result and stores into a variable
         
-        NUM = len(tasks_dict) # Updated every loop with the list length, not exactly a constant
+        LENGTH = len(tasks_dict) # Updated every loop with the list length, not exactly a constant
         
 
         # check the length of the dictionary and updates it according    
@@ -48,22 +49,23 @@ def main():
                                            }})     
         else:
             
-            tasks_dict.update({"Task" + str(NUM) : {"name" : task["name"],
+            tasks_dict.update({"Task" + str(LENGTH) : {"name" : task["name"],
                                                     "completed" : task["completed"],
                                                     "reminder" : task["reminder"],
                                                     "priority" : task["priority"],
                                                     "comments" : task["comments"]
                                                     }})
         
-        # Similar to NUM, not quite a constant but helps make logic less crowded
-        REMINDER = tasks_dict["Task" + str(NUM)]["reminder"]
+        # Similar to LENGTH, not quite a constant but helps make logic less crowded
+        REMINDER = tasks_dict["Task" + str(LENGTH)]["reminder"]
         # checks to see if the latest task appended into the dictionary wants a reminder then sets it if it does
         if REMINDER == YES:
-            Reminder(task=tasks_dict["Task" + str(NUM)], weeks=reminder_info[0], days=reminder_info[1], \
-                     hours=reminder_info[2], minutes=reminder_info[3], seconds=reminder_info[4]).job(tasks_dict=tasks_dict["Task" + str(NUM)])
+            Reminder(task=tasks_dict["Task" + str(LENGTH)], weeks=reminder_info[0], days=reminder_info[1], \
+                     hours=reminder_info[2], minutes=reminder_info[3], seconds=reminder_info[4]).job(tasks_dict=tasks_dict["Task" + str(LENGTH)])
         
         # TODO sort tasks based on priority
-
+        test_sort = sort(tasks_dict=tasks_dict, LENGTH=LENGTH)
+        print(test_sort)
 
         
         """
