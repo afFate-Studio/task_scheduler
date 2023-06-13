@@ -54,13 +54,14 @@ def main():
                                                     "priority" : task["priority"],
                                                     "comments" : task["comments"]
                                                     }})
-            
-        reminder_check = tasks_dict["Task" + str(NUM)]["reminder"]
-        # checks to see if the latest task appended into the dictionary wants a reminder then sets it if it does
-        if reminder_check == YES:
-            Reminder(task=tasks_dict["Task0"]["name"], weeks=reminder_info[0], days=reminder_info[1], hours=reminder_info[2], minutes=reminder_info[3], seconds=reminder_info[4]).job()
         
-        print(tasks_dict["Task" + str(NUM)]["reminder"])
+        # Similar to NUM, not quite a constant but helps make logic less crowded
+        REMINDER = tasks_dict["Task" + str(NUM)]["reminder"]
+        # checks to see if the latest task appended into the dictionary wants a reminder then sets it if it does
+        if REMINDER == YES:
+            Reminder(task=tasks_dict["Task" + str(NUM)], weeks=reminder_info[0], days=reminder_info[1], \
+                     hours=reminder_info[2], minutes=reminder_info[3], seconds=reminder_info[4]).job(tasks_dict=tasks_dict["Task" + str(NUM)])
+        
         # TODO sort tasks based on priority
 
 

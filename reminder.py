@@ -11,21 +11,20 @@ from get_reminder_time import *
 
 class Reminder():
     def __init__(self, task, weeks, days, hours, minutes, seconds):
-        self.task = task
+        self.task = task["name"]
         self.weeks = weeks
         self.days = days
         self.hours = hours
         self.minutes = minutes
         self.seconds = seconds
 
-    # fix
-    def job(self):
-        for task in self.task:
-            print("Task: " + self.task)
-            print("Completed: " + task.completed)
-            print("Reminder: " + task.reminder)
-            print("Priority: " + str(task.priority))
-            print("Comments: " + task.comments)
+    # TODO make actual functionality now that it works
+    def job(self, tasks_dict):
+        print("Task: " + self.task)
+        print("Completed: " + tasks_dict["completed"])
+        print("Reminder: " + tasks_dict["reminder"])
+        print("Priority: " + str(tasks_dict["priority"]))
+        print("Comments: " + tasks_dict["comments"])
         print(str(self.weeks) + " " + str(self.seconds))
 
     #TODO reminders function - to actually send out a reminder 
