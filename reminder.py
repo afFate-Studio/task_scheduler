@@ -18,9 +18,10 @@ class Reminder():
         self.minutes = minutes
         self.seconds = seconds
 
+    # fix
     def job(self):
         for task in self.task:
-            print("Task: " + task.task)
+            print("Task: " + self.task)
             print("Completed: " + task.completed)
             print("Reminder: " + task.reminder)
             print("Priority: " + str(task.priority))

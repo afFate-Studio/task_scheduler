@@ -7,6 +7,10 @@ def check_response(response):
         try:
             for i in RESPONSES:
                 if response == i:   # if valid response, ends loop and returns response
+                    if response in RESPONSES[0:3]:
+                        response = 'Y'
+                    else:
+                        response = 'N'
                     return response
             raise ValueError        
         except ValueError:

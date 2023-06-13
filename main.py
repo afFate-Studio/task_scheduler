@@ -10,7 +10,7 @@ from set_task import *                  # module used to set the task informatio
 
 def main():
     tasks_dict = {} # empty dictionary for task objects to be appended to
-    RESPONSES = ['Y','y','Yes','yes']   # constant to iterate through to check for a positive response
+    YES = 'Y'   # constant to check for a positive response
     """
         Asks user if they have a list already made that they would like to add to
         Then checks the response to make sure it is a valid response
@@ -20,7 +20,7 @@ def main():
     """
     response = pyip.inputStr("Do you have a list file you would like to add to? ( Y | N ) : ")
     response = check_response(response) # checks for valid response
-    if response in RESPONSES:
+    if response in YES:
         file_name = pyip.inputFilepath("Please enter the full file path : ")
         f = FileHandling(file_name)    # tasks file path and sets the variable
         f.handling()    # checks if file exists, if it doesn't exists prompts user to make the file
@@ -31,32 +31,39 @@ def main():
     while True:
 
         task_info_list = get_task_info() # gets all tasks info (name, completion status, reminder, priority, comment) then stores it into a variable
-        reminder_info = task_info_list.pop(3) # tasks the reminder info out of the task_info_list and makes it's own list
+        if task_info_list[2] == YES:
+            reminder_info = task_info_list.pop(3) # tasks the reminder info out of the task_info_list and makes it's own list
         task = set_task(task_info_list) # breaks task_info into multiple variables and passes that into the Task object, then returns result and stores into a variable
         
+        NUM = len(tasks_dict) # Updated every loop with the list length, not exactly a constant
+        
+
+        # check the length of the dictionary and updates it according    
         if len(tasks_dict) == 0:
-            tasks_dict.update({"Task0" : {"name" : task["name"],
+            tasks_dict.update({"Task0" : { "name" : task["name"],
                                            "completed" : task["completed"],
                                            "reminder" : task["reminder"],
                                            "priority" : task["priority"],
                                            "comments" : task["comments"]
-                                           }})
+                                           }})     
         else:
-            NUM = len(tasks_dict)
+            
             tasks_dict.update({"Task" + str(NUM) : {"name" : task["name"],
                                                     "completed" : task["completed"],
                                                     "reminder" : task["reminder"],
                                                     "priority" : task["priority"],
                                                     "comments" : task["comments"]
                                                     }})
-
-        print(tasks_dict)
+            
+        reminder_check = tasks_dict["Task" + str(NUM)]["reminder"]
+        # checks to see if the latest task appended into the dictionary wants a reminder then sets it if it does
+        if reminder_check == YES:
+            Reminder(task=tasks_dict["Task0"]["name"], weeks=reminder_info[0], days=reminder_info[1], hours=reminder_info[2], minutes=reminder_info[3], seconds=reminder_info[4]).job()
+        
+        print(tasks_dict["Task" + str(NUM)]["reminder"])
         # TODO sort tasks based on priority
-        # DEBUG
-        # TODO figure out why reminder is always 'n'
-        for i in range(len(tasks_dict)):
-            if tasks_dict["Task" + str(i)]['reminder'] == RESPONSES:
-                Reminder(task=tasks_dict["Task" + str(i)]["name"], weeks=reminder_info[0], days=reminder_info[1], hours=reminder_info[2], minutes=reminder_info[3], seconds=reminder_info[4]).job()
+
+
         
         """
             Asks user if they would like to continue adding more tasks,
@@ -70,13 +77,13 @@ def main():
         response = pyip.inputStr("\nWould you like to enter another task ( Y | N ): ")
         response = check_response(response) # check for valid response
         
-        if response in RESPONSES:
+        if response in YES:
             continue
         else:
             if file_name == "":
                 response = pyip.inputStr("\nWould you like to save your task list to a file ( Y | N ): ")
                 response = check_response(response)
-                if response in RESPONSES:
+                if response in YES:
                         file_name = pyip.inputFilepath("Please enter a file name you would like: ")
                         f = FileHandling(file_name, tasks_dict)
                         f.saving()
@@ -85,7 +92,7 @@ def main():
             else:
                 response = pyip.inputStr("\nWould you like to save the new tasks to the file you provided? ( Y | N ): ")
                 response = check_response(response)
-                if response in RESPONSES:
+                if response in YES:
                     f = FileHandling(file_name, tasks_dict)
                     f.saving()
                 else:
@@ -97,7 +104,7 @@ def main():
             """
             response = pyip.inputStr("\nWould you like to email your task list ( Y | N ): ") # prompts user asking if they would like to email their task list
             response = check_response(response)    # checks user response
-            if response in RESPONSES:
+            if response in YES:
                 Emailer(task) # checks response and sends on doesn't send email based on the response
             else:
                 print("Task list will not be emailed")   # if the user picks No, tell the user the list will not be emailed
