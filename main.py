@@ -63,11 +63,9 @@ def main():
             Reminder(task=tasks_dict["Task" + str(LENGTH)], weeks=reminder_info[0], days=reminder_info[1], \
                      hours=reminder_info[2], minutes=reminder_info[3], seconds=reminder_info[4]).job(tasks_dict=tasks_dict["Task" + str(LENGTH)])
         
-        # TODO sort tasks based on priority
-        test_sort = sort(tasks_dict=tasks_dict, LENGTH=LENGTH)
-        print(test_sort)
-
-        
+        # takes tasks_dict, sorts it by the 'priority' key then returns the value
+        sorted_tasks_dict = sort(tasks_dict=tasks_dict)
+      
         """
             Asks user if they would like to continue adding more tasks,
             if yes the loop continues
@@ -88,7 +86,7 @@ def main():
                 response = check_response(response)
                 if response in YES:
                         file_name = pyip.inputFilepath("Please enter a file name you would like: ")
-                        f = FileHandling(file_name, tasks_dict)
+                        f = FileHandling(file_name, sorted_tasks_dict)
                         f.saving()
                 else:
                     print("You chose to not save your task list to a file.")
@@ -96,7 +94,7 @@ def main():
                 response = pyip.inputStr("\nWould you like to save the new tasks to the file you provided? ( Y | N ): ")
                 response = check_response(response)
                 if response in YES:
-                    f = FileHandling(file_name, tasks_dict)
+                    f = FileHandling(file_name, sorted_tasks_dict)
                     f.saving()
                 else:
                     print("You chose not to save your tasks.")

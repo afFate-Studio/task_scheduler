@@ -35,20 +35,22 @@ class FileHandling:
                         return self.file_name
                 except ValueError:
                     pass
-    
-    # TODO  Get to work with a dictionary
+
     def saving(self):
+        # takes tasks_dict appends it to the list stack
+        stack = [(self.task, '')]
+
         with open(self.file_name, "a") as f:
-            for tasks in self.task:
-                f.write("Task Name : ")
-                f.write(tasks.task)
-                f.write("\nTask Completed Y/N : ")
-                f.write(tasks.completed)
-                f.write("\nReminder Y/N : ")
-                f.write(tasks.reminder)
-                f.write("\nTask Priority (0 - 3) : ")
-                f.write(str(tasks.priority))
-                f.write("\nComments : ")
-                f.write(tasks.comments)
-                f.write("\n\n")
-            f.close()
+            while stack:
+                # takes current_dict and parent_key from the stack
+                current_dict, parent_key = stack.pop()
+
+                # traverse the nested dictionary
+                for key, value in current_dict.items():
+                    new_key = f"{parent_key}.{key}" if parent_key else key
+
+                    if isinstance(value, dict):
+                        stack.append((value, new_key))
+                    else:
+                        label = f"{key}"
+                        f.write(f"{label}: {str(value)}\n")
