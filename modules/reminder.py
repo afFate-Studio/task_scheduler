@@ -3,7 +3,7 @@
 import time
 import pyinputplus as pyip
 import schedule
-from get_reminder_time import *
+from modules.get_reminder_time import *
 
 # DOCS for schedule module
 # https://schedule.readthedocs.io/en/stable/

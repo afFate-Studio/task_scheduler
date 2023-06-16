@@ -1,6 +1,6 @@
 import pyinputplus as pyip
-from check_response import *
-from file_handler import *
+from modules.check_response import *
+from modules.file_handler import *
 
 def ask_user(prompt):
     response = pyip.inputStr(prompt)

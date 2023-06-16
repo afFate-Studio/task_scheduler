@@ -1,13 +1,13 @@
 # this program is used to keep track of tasks I need to complete
 import pyinputplus as pyip              # module to check user input
-from emailer import *                   # module to email a task list to an email provided by the user
-from file_handler import *              # module used to load and save to a file
-from reminder import *                  # module used to set reminders for tasks 
-from check_response import *            # module used to check the responses from the user
-from get_task_info import *             # module used to get the task information from the user
-from sorter import *                    # module used to sort the tasks_dict based on priority
-from tasks import *                     # module used to update the tasks_dict
-from get_response import *             # module used to ask user for a Y | N response
+from modules.emailer import *                   # module to email a task list to an email provided by the user
+from modules.file_handler import *              # module used to load and save to a file
+from modules.reminder import *                  # module used to set reminders for tasks 
+from modules.check_response import *            # module used to check the responses from the user
+from modules.get_task_info import *             # module used to get the task information from the user
+from modules.sorter import *                    # module used to sort the tasks_dict based on priority
+from modules.tasks import *                     # module used to update the tasks_dict
+from modules.get_response import *             # module used to ask user for a Y | N response
 
 def main():
     YES = 'Y'   # constant to check for a positive response

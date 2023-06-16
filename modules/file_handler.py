@@ -1,8 +1,8 @@
 from os import path
 import pyinputplus as pyip
-from check_response import *
-from set_task import *
-from tasks import *
+from modules.check_response import *
+from modules.set_task import *
+from modules.tasks import *
 
 class FileHandling:
     """
