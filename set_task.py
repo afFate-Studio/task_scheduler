@@ -1,4 +1,3 @@
-from tasks import *
 
 # passes task_info list variables into the Task class, then returns the task object
 def set_task(task, completed, reminder, priority, comments):

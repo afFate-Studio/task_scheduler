@@ -2,6 +2,7 @@ from os import path
 import pyinputplus as pyip
 from check_response import *
 from set_task import *
+from tasks import *
 
 class FileHandling:
     """
@@ -15,22 +16,30 @@ class FileHandling:
 
     def handling(self):
         try:
+            # raises a FileNotFoundError if no file is found
             if not path.exists(self.file_name):
                 raise FileNotFoundError
             else:
+                # opens the provided file, reads it and stores the information into a variable
                 with open(self.file_name, 'r') as f:
                     lines = f.readlines()
                     f.close()
                 
-                task_info = {}
+                # empty list to add file info into
+                tasks = {}
+                current_task = {}
+                # goes line by line spliting the key : value pair by looking for ':' in the str
                 for line in lines:
                     line = line.strip()
-                    if ':' in line:
+                    if line and ':' in line:
                         key, value = line.split(':', 1)
-                        task_info[key.strip()] = value.strip()
+                        current_task[key.strip()] = value.strip()
+                    else:
+                        tasks.update(Task(tasks, current_task))   
+                        current_task = {}
 
-                set_task(task_info)
-
+                return tasks
+            
         except FileNotFoundError:
             while True:
                 try:
@@ -51,7 +60,7 @@ class FileHandling:
         # takes tasks_dict appends it to the list stack
         stack = [(self.task, '')]
 
-        with open(self.file_name, "a") as f:
+        with open(self.file_name, "w") as f:
             while stack:
                 # takes current_dict and parent_key from the stack
                 current_dict, parent_key = stack.pop()

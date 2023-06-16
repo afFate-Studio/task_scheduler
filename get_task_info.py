@@ -1,7 +1,6 @@
 import pyinputplus as pyip
 from check_response import *
 from reminder import *
-from tasks import *
 from set_task import *
 
 # gets all of the task info from the user, appends it to a list then returns the list
