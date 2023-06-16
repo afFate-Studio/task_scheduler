@@ -20,22 +20,18 @@ def main():
         to choose either to create a new file or bypass the upload
     """
     response = pyip.inputStr("Do you have a list file you would like to add to? ( Y | N ) : ")
-    response = check_response(response) # checks for valid response
+    check_response(response) # checks for valid response
     if response in YES:
         file_name = pyip.inputFilepath("Please enter the full file path : ")
-        f = FileHandling(file_name)    # tasks file path and sets the variable
-        f.handling()    # checks if file exists, if it doesn't exists prompts user to make the file
+        FileHandling(file_name).handling()    # tasks file path and sets the variable & checks if file exists, if it doesn't exists prompts user to make the file   
     else:
         file_name = ""  # resets file_name to empty string
 
     # loops until user decides they have no more tasks to add
     while True:
 
-        task_info_list = get_task_info() # gets all tasks info (name, completion status, reminder, priority, comment) then stores it into a variable
-        if task_info_list[2] == YES:
-            reminder_info = task_info_list.pop(3) # tasks the reminder info out of the task_info_list and makes it's own list
-        task = set_task(task_info_list) # breaks task_info into multiple variables and passes that into the Task object, then returns result and stores into a variable
-        
+        task, reminder_info = get_task_info() # gets all tasks info (name, completion status, reminder, priority, comment) and reminder time then stores it into a variable
+  
         LENGTH = len(tasks_dict) # Updated every loop with the list length, not exactly a constant
         
 

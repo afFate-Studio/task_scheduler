@@ -1,8 +1,8 @@
 #import notify2
-import pyinputplus as pyip
-import os
-import schedule
+#import os
 import time
+import pyinputplus as pyip
+import schedule
 from get_reminder_time import *
 
 # DOCS for schedule module

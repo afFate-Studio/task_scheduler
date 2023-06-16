@@ -1,147 +1,24 @@
-Task Name : task 1
-Task Completed Y/N : n
-Reminder Y/N : n
-Task Priority (0 - 3) : 1
-Comments : onsaon
+name : task 1
+completed : N
+reminder : N
+priority : 1
+comments : soan
 
-Task Name : task
-Task Completed Y/N : n
-Reminder Y/N : n
-Task Priority (0 - 3) : 1
-Comments : nodn
+name : task 3
+completed : N
+reminder : N
+priority : 2
+comments : sdnoa
 
-Task Name : test
-Task Completed Y/N : n
-Reminder Y/N : y
-Task Priority (0 - 3) : 1
-Comments : sonda
+name : tak 3
+completed : N
+reminder : N
+priority : 3
+comments : asonods
 
-Task Name : task 1
-Task Completed Y/N : n
-Reminder Y/N : y
-Task Priority (0 - 3) : 0
-Comments : oands
+name : task
+completed : N
+reminder : N
+priority : 3
+comments : onsa
 
-Task Name : task
-Task Completed Y/N : n
-Reminder Y/N : n
-Task Priority (0 - 3) : 1
-Comments : oandno
-
-Task Name : task1
-Task Completed Y/N : n
-Reminder Y/N : n
-Task Priority (0 - 3) : 1
-Comments : owneq
-
-Task Name : n
-Task Completed Y/N : n
-Reminder Y/N : n
-Task Priority (0 - 3) : 1
-Comments : n
-
-Task Name : t
-Task Completed Y/N : n
-Reminder Y/N : n
-Task Priority (0 - 3) : 1
-Comments : sona
-
-Task Name : n
-Task Completed Y/N : n
-Reminder Y/N : n
-Task Priority (0 - 3) : 1
-Comments : n
-
-Task Name : m
-Task Completed Y/N : y
-Reminder Y/N : y
-Task Priority (0 - 3) : 1
-Comments : ewqee
-
-Task Name : testing
-Task Completed Y/N : n
-Reminder Y/N : y
-Task Priority (0 - 3) : 1
-Comments : no comments
-
-Task Name : task 1000
-Task Completed Y/N : n
-Reminder Y/N : y
-Task Priority (0 - 3) : 3
-Comments : task testing
-Task Name : task 1
-Task Completed Y/N : n
-Reminder Y/N : n
-Task Priority (0 - 3) : 1
-Comments : onsaon
-
-Task Name : task
-Task Completed Y/N : n
-Reminder Y/N : n
-Task Priority (0 - 3) : 1
-Comments : nodn
-
-Task Name : test
-Task Completed Y/N : n
-Reminder Y/N : y
-Task Priority (0 - 3) : 1
-Comments : sonda
-
-Task Name : task 1
-Task Completed Y/N : n
-Reminder Y/N : y
-Task Priority (0 - 3) : 0
-Comments : oands
-
-Task Name : task
-Task Completed Y/N : n
-Reminder Y/N : n
-Task Priority (0 - 3) : 1
-Comments : oandno
-
-Task Name : task1
-Task Completed Y/N : n
-Reminder Y/N : n
-Task Priority (0 - 3) : 1
-Comments : owneq
-
-Task Name : n
-Task Completed Y/N : n
-Reminder Y/N : n
-Task Priority (0 - 3) : 1
-Comments : n
-
-Task Name : t
-Task Completed Y/N : n
-Reminder Y/N : n
-Task Priority (0 - 3) : 1
-Comments : sona
-
-Task Name : n
-Task Completed Y/N : n
-Reminder Y/N : n
-Task Priority (0 - 3) : 1
-Comments : n
-
-Task Name : m
-Task Completed Y/N : y
-Reminder Y/N : y
-Task Priority (0 - 3) : 1
-Comments : ewqee
-
-Task Name : testing
-Task Completed Y/N : n
-Reminder Y/N : y
-Task Priority (0 - 3) : 1
-Comments : no comments
-
-Task Name : task 1000
-Task Completed Y/N : n
-Reminder Y/N : y
-Task Priority (0 - 3) : 3
-Comments : task testing
-Task0.name: task
-Task0.completed: N
-Task0.reminder: N
-Task0.priority: 2
-Task0.comments: weqeqw

@@ -1,5 +1,7 @@
 from os import path
 import pyinputplus as pyip
+from check_response import *
+from set_task import *
 
 class FileHandling:
     """
@@ -12,21 +14,30 @@ class FileHandling:
         self.task = task
 
     def handling(self):
-        RESPONSES = ['Y','y','Yes','yes','N','n','No','no']
         try:
             if not path.exists(self.file_name):
                 raise FileNotFoundError
+            else:
+                with open(self.file_name, 'r') as f:
+                    lines = f.readlines()
+                    f.close()
+                
+                task_info = {}
+                for line in lines:
+                    line = line.strip()
+                    if ':' in line:
+                        key, value = line.split(':', 1)
+                        task_info[key.strip()] = value.strip()
+
+                set_task(task_info)
+
         except FileNotFoundError:
             while True:
                 try:
                     response = input("File not found, would you like to create a new file with the name " + self.file_name + " Y | N: ")
-                    for i in range(8):
-                        if response in RESPONSES:   # if valid response, ends loop and returns response
-                            break
-                        else:
-                            response = pyip.inputStr("Please enter a valid selection ( Y | N ): ")  # otherwise prompts user to input a new response then checks new response
+                    check_response(response=response)
                     
-                    if response in RESPONSES[0:3]:
+                    if response in 'Y':
                         f = open(self.file_name, "x")
                         f.close()
                         break
@@ -49,8 +60,13 @@ class FileHandling:
                 for key, value in current_dict.items():
                     new_key = f"{parent_key}.{key}" if parent_key else key
 
+                    # sets a new key if a new dictionary is reached
                     if isinstance(value, dict):
                         stack.append((value, new_key))
                     else:
+                        # sets a label for the values
                         label = f"{key}"
-                        f.write(f"{label}: {str(value)}\n")
+                        # writes to the provided file name
+                        f.write(f"{label} : {str(value)}\n")
+                        if label == 'comments':
+                            f.write('\n')
