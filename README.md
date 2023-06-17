@@ -12,5 +12,10 @@ if you have any questions or perhaps a better way of implementing something I'm 
 how to run this program:
 
 pip install -r requirements.txt
+
+to save time, if you have a file to provide the following information in the initialize.ini
+full_file_path
+your_email (gmail)
+
 python main.py
 or python3 main.py

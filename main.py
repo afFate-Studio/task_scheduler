@@ -9,6 +9,7 @@ from modules.sorter import *                    # module used to sort the tasks_
 from modules.tasks import *                     # module used to update the tasks_dict
 from modules.get_response import *             # module used to ask user for a Y | N response
 
+# TODO allow user to use initialize.ini to provide a full_file_path
 def main():
     YES = 'Y'   # constant to check for a positive response
     """
@@ -62,12 +63,14 @@ def main():
             """
             response = ask_user("\nWould you like to email your task list ( Y | N ): ") # prompts user asking if they would like to email their task list
             if response == YES:
+                # TODO allow user to send task list to email or export as txt
+                # TODO allow user to use an initialize.ini to give their email
                 Emailer(task) # checks response and sends on doesn't send email based on the response
             else:
                 print("Task list will not be emailed")   # if the user picks No, tell the user the list will not be emailed
                 
             break # break main loop
 
-# TODO allow user to send task list to email or export as txt
+
 if __name__ == '__main__':
     main()
