@@ -24,7 +24,7 @@ def main():
         file_name = pyip.inputFilepath("Please enter the full file path : ")
         tasks_dict = FileHandling(file_name).handling()    # tasks file path and sets the variable & checks if file exists, if it doesn't exists prompts user to make the file   
     else:
-        file_name = None  # resets file_name to empty string
+        file_name = None  # resets file_name to Null
 
     # loops until user decides they have no more tasks to add
     while True:
