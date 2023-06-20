@@ -1,5 +1,5 @@
 # this program is used to keep track of tasks I need to complete
-import pyinputplus as pyip              # module to check user input
+import pyinputplus as pyip                      # module to check user input
 from modules.emailer import *                   # module to email a task list to an email provided by the user
 from modules.file_handler import *              # module used to load and save to a file
 from modules.reminder import *                  # module used to set reminders for tasks 
@@ -7,7 +7,8 @@ from modules.check_response import *            # module used to check the respo
 from modules.get_task_info import *             # module used to get the task information from the user
 from modules.sorter import *                    # module used to sort the tasks_dict based on priority
 from modules.tasks import *                     # module used to update the tasks_dict
-from modules.get_response import *             # module used to ask user for a Y | N response
+from modules.get_response import *              # module used to ask user for a Y | N response
+from modules.update_task import *               # module used to update tasks in the list based on user input
 
 # TODO allow user to use initialize.ini to provide a full_file_path
 def main():
@@ -57,6 +58,11 @@ def main():
         else:
             save_file(file_name=file_name, sorted_tasks_dict=sorted_tasks_dict)
 
+        response = ask_user("Would you like to update any tasks in the list: ")
+        if response == YES:
+            # takes the the sorted task list, allows user to update it, then resorts it
+            sorted_tasks_dict = (sort(update_task(sorted_tasks_dict)))
+
             """
                 User is asked if they would like to email their task list
                 if yes, email will be sent.
@@ -66,9 +72,7 @@ def main():
                 # TODO allow user to send task list to email or export as txt
                 # TODO allow user to use an initialize.ini to give their email
                 Emailer(task) # checks response and sends on doesn't send email based on the response
-            else:
-                print("Task list will not be emailed")   # if the user picks No, tell the user the list will not be emailed
-                
+            
             break # break main loop
 
 

@@ -4,3 +4,7 @@
 # print all of the task's elements
 # allow user to change what they want in the task
 # update the selected task in the dictionary
+import pyinputplus as pyip
+
+def update_task(tasks):
+    return tasks

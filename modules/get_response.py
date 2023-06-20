@@ -15,5 +15,4 @@ def save_file(file_name, sorted_tasks_dict):
             file_name = pyip.inputFilepath("Please enter a file name you would like: ")
     if response == 'Y':
         FileHandling(file_name, sorted_tasks_dict).saving()
-    else:
-        print("You chose not to save your tasks.")
+        
