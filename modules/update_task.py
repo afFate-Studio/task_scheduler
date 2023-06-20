@@ -7,4 +7,7 @@
 import pyinputplus as pyip
 
 def update_task(tasks):
+    print('Please select a task you would like to edit based on it\'s name: ')
+    for dict, info in enumerate(tasks):
+        print(tasks[info]['name'])
     return tasks

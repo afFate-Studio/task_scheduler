@@ -11,6 +11,7 @@ from modules.get_response import *              # module used to ask user for a 
 from modules.update_task import *               # module used to update tasks in the list based on user input
 
 # TODO allow user to use initialize.ini to provide a full_file_path
+# TODO add a menu for the user to select what they wish to do
 def main():
     YES = 'Y'   # constant to check for a positive response
     """
@@ -58,7 +59,7 @@ def main():
         else:
             save_file(file_name=file_name, sorted_tasks_dict=sorted_tasks_dict)
 
-        response = ask_user("Would you like to update any tasks in the list: ")
+        response = ask_user("Would you like to update any tasks in the list ( Y | N ): ")
         if response == YES:
             # takes the the sorted task list, allows user to update it, then resorts it
             sorted_tasks_dict = (sort(update_task(sorted_tasks_dict)))
