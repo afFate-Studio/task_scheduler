@@ -21,8 +21,7 @@ def check_option(response, file_name=None, tasks_dict={}):
                         tasks_dict = (sort(update_task(tasks=tasks_dict)))
                         return file_name, tasks_dict
                 case 3:
-                    print('exit')
-                    break
+                    quit()
                 case _:
                     print('invalid choice')
                     raise ValueError
