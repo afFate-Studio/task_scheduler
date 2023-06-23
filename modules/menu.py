@@ -11,8 +11,10 @@ def check_option(response):
                     file_name, tasks_dict = uploadFile()
                     return file_name, tasks_dict
                 case 1:
-                    print('make a new task file')
-                    save_file(file_name=file_name, sorted_tasks_dict=sorted_tasks_dict)
+                    file_name = None
+                    tasks_dict = {}
+                    file_name = save_file(file_name=file_name, sorted_tasks_dict=tasks_dict)
+                    return file_name, tasks_dict
                 case 2:
                     # if file was uploaded or created
                     print('update task')
@@ -32,7 +34,7 @@ def menu():
     print('1 -> Make a new file')
     print('2 -> Update a task')
     print('3 -> To Exit the application')
-    check_option(pyip.inputNum('Enter your choice: '))
-    
+    return check_option(pyip.inputNum('Enter your choice: '))
+
 if __name__ == '__main__':
     menu()

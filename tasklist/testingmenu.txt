@@ -1,0 +1,6 @@
+name : task
+completed : N
+reminder : N
+priority : 9
+comments : N
+
