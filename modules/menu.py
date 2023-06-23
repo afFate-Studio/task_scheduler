@@ -1,9 +1,10 @@
 import pyinputplus as pyip
 from modules.upload_list import *
 from modules.get_response import *
-from modules.upload_list import *
+from modules.update_task import *
+from modules.sorter import *
 
-def check_option(response):
+def check_option(response, file_name=None, tasks_dict={}):
     while True:
         try:
             match response:
@@ -11,14 +12,14 @@ def check_option(response):
                     file_name, tasks_dict = uploadFile()
                     return file_name, tasks_dict
                 case 1:
-                    file_name = None
-                    tasks_dict = {}
                     file_name = save_file(file_name=file_name, sorted_tasks_dict=tasks_dict)
                     return file_name, tasks_dict
                 case 2:
-                    # if file was uploaded or created
-                    print('update task')
-                    break
+                    if not file_name:
+                        file_name, tasks_dict = uploadFile()
+                    else:
+                        tasks_dict = (sort(update_task(tasks=tasks_dict)))
+                        return file_name, tasks_dict
                 case 3:
                     print('exit')
                     break

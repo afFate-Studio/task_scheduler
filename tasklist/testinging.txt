@@ -1,6 +1,0 @@
-name : task
-completed : N
-reminder : N
-priority : 2
-comments : N
-

@@ -26,7 +26,7 @@ def get_task_info():
         except ValueError: 
             print("Oops! That was not a valid choice, please try again.")
 
-    task_comment = ask_user("Enter a comment for this task: ") # get task comment from user
+    task_comment = pyip.inputStr("Enter a comment for this task: ") # get task comment from user
 
     task = set_task(task=task_name,completed=task_completion_status,reminder=task_reminder_status,priority=task_priority,comments=task_comment)
     if task_reminder_status == 'N':

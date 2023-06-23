@@ -49,7 +49,7 @@ def main():
             response = ask_user("Would you like to update any tasks in the list ( Y | N ): ")
             if response == YES:
                 # takes the the sorted task list, allows user to update it, then resorts it
-                sorted_tasks_dict = (sort(update_task(sorted_tasks_dict)))
+                sorted_tasks_dict = check_option(response=2, file_name=file_name, tasks_dict=sorted_tasks_dict)
 
                 """
                     User is asked if they would like to email their task list
