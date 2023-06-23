@@ -17,5 +17,5 @@ to save time, if you have a file to provide the following information in the ini
 full_file_path
 your_email (gmail)
 
-python main.py
-or python3 main.py
+python menu.py
+or python3 menu.py

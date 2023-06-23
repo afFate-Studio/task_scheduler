@@ -38,7 +38,7 @@ class FileHandling:
                         tasks.update(Task(tasks, current_task))   
                         current_task = {}
 
-                return tasks
+                return tasks, self.file_name
             
         except FileNotFoundError:
             while True:
@@ -51,7 +51,7 @@ class FileHandling:
                         f.close()
                         break
                     else:
-                        self.file_name = ""
+                        self.file_name = None
                         return self.file_name
                 except ValueError:
                     pass

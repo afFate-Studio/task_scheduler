@@ -2,7 +2,7 @@ import pyinputplus as pyip
 from modules.check_response import *
 from modules.reminder import *
 from modules.set_task import *
-from get_response import *
+from modules.get_response import *
 
 # gets all of the task info from the user, appends it to a list then returns the list
 def get_task_info():

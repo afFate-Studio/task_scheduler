@@ -4,7 +4,7 @@ from modules.file_handler import *
 
 def ask_user(prompt):
     response = pyip.inputStr(prompt)
-    return check_response(response)
+    return check_response(response=response)
 
 def save_file(file_name, sorted_tasks_dict):
     if file_name:
@@ -14,5 +14,5 @@ def save_file(file_name, sorted_tasks_dict):
         if response == 'Y':
             file_name = pyip.inputFilepath("Please enter a file name you would like: ")
     if response == 'Y':
-        FileHandling(file_name, sorted_tasks_dict).saving()
+        FileHandling(file_name=file_name, task=sorted_tasks_dict).saving()
         
