@@ -9,18 +9,16 @@ from modules.tasks import *                     # module used to update the task
 from modules.get_response import *              # module used to ask user for a Y | N response
 from modules.update_task import *               # module used to update tasks in the list based on user input
 from modules.menu import *                      # module used as a menu for the user to select what they wish to do
-# TODO allow user to use initialize.ini to provide a full_file_path
+
 def main():
     YES = 'Y'   # constant to check for a positive response
 
     file_name, tasks_dict = menu()      # calls the main menu
 
-    #file_name = None  # resets file_name to Null
-
     # loops until user decides they have no more tasks to add
     while True:
         LENGTH = len(tasks_dict) # gets the length of tasks_dict
-        task, reminder_info = get_task_info() # gets all tasks info (name, completion status, reminder, priority, comment) and reminder time then stores it into a variable 
+        task, reminder_info = get_task_info(tasks_dict=tasks_dict) # gets all tasks info (name, completion status, reminder, priority, comment) and reminder time then stores it into a variable 
         tasks_dict = Task(tasks_dict=tasks_dict, task=task) # updates tasks_dict with new tasks
         
         # Similar to LENGTH, not quite a constant but helps make logic less crowded

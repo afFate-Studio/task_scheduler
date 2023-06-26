@@ -52,7 +52,7 @@ class FileHandling:
                         break
                     else:
                         self.file_name = None
-                        return self.file_name
+                        return self.file_name, self.task
                 except ValueError:
                     pass
 

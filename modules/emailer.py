@@ -1,6 +1,6 @@
 import smtplib
 import pyinputplus as pyip
-
+# TODO finish
 # class used to send task list
 class Emailer:
 

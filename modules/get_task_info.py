@@ -5,10 +5,19 @@ from modules.set_task import *
 from modules.get_response import *
 
 # gets all of the task info from the user, appends it to a list then returns the list
-def get_task_info():
-    # TODO check for duplicates, prevent the user from doing duplicates.
+def get_task_info(tasks_dict):
     # it will mess with the update_task functionality
-    task_name = pyip.inputStr("\nEnter the task name: ") # get task name from user
+    while True:
+        try:
+            task_name = pyip.inputStr("\nEnter the task name: ") # get task name from user
+
+            for dict, info in enumerate(tasks_dict):
+                if task_name == tasks_dict[info]['name']:
+                    raise ValueError('Task name already taken')
+            break
+        except ValueError:
+            print('Task name already taken')
+
 
     task_completion_status = ask_user("Enter the task completion status ( Y | N ): ") # get task completion status from user
 
@@ -20,7 +29,7 @@ def get_task_info():
     while True:
         try:
             task_priority = pyip.inputNum("Enter the priority of this task ( 0 - 10 ): ") # get task priority from the user
-            if task_priority not in range(10):
+            if task_priority not in range(11):
                 raise ValueError
             else: break
         except ValueError: 
