@@ -17,9 +17,10 @@ def check_option(response, file_name=None, tasks_dict={}):
                 case 2:
                     if not file_name:
                         file_name, tasks_dict = uploadFile()
+                        tasks_dict = (sort(update_task(tasks=tasks_dict)))
                     else:
                         tasks_dict = (sort(update_task(tasks=tasks_dict)))
-                        return file_name, tasks_dict
+                    return file_name, tasks_dict
                 case 3:
                     quit()
                 case _:

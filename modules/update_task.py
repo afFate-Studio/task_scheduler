@@ -10,4 +10,11 @@ def update_task(tasks):
     print('Please select a task you would like to edit based on it\'s name: ')
     for dict, info in enumerate(tasks):
         print(tasks[info]['name'])
+    user_task = pyip.inputStr('Which task would you like to update: ')
+
+    # TODO allow user to edit
+    for dict, info in enumerate(tasks):
+        if user_task == tasks[info]['name']:
+            print(user_task)
+
     return tasks
