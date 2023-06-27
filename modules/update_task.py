@@ -2,6 +2,8 @@ import pyinputplus as pyip
 from modules.get_response import *
 from modules.reminder import *
 
+# takes the task[info] which is the current dictionary in the tasks_dict
+# and sets the info based on how the user responded to the questions
 def updater(task, name, complete, remind, priority, comment):
     task['name'] = name
     task['completed'] = complete
@@ -10,14 +12,18 @@ def updater(task, name, complete, remind, priority, comment):
     task['comments'] = comment
     
 
+
 def update_task(tasks):
+
+    # iterates through the dictionary and prints all of the task names
     print('Please select a task you would like to edit based on it\'s name: ')
     for dict, info in enumerate(tasks):
         print(tasks[info]['name'])
-    user_task = pyip.inputStr('Which task would you like to update: ')
-
-
+    user_task = pyip.inputStr('Which task would you like to update: ')  # prompts user to pick one of the dictionaries
+    
+    # checks to see if the user selected a task name in the nested dictionary
     for dict, info in enumerate(tasks):
+        # if there is a match user is prompted to answer questions based on what they wish to update
         if user_task == tasks[info]['name']:
             new_name_response = ask_user('Would you like to enter a new name for this task: ( Y | N ): ')
             new_completion_status = ask_user('Would you like to change the completion status of this task ( Y | N ): ')

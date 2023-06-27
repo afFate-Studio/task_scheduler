@@ -27,7 +27,7 @@ def check_option(response, file_name=None, tasks_dict={}):
                     print('invalid choice')
                     raise ValueError
         except ValueError:
-            response = pyip.inputNum('Enter a number for testing 0 - 3: ')
+            response = pyip.inputNum('Enter a correct menu option ( 0 - 3 ): ')
 
 def menu():
     print('Enter a menu option to continue...')
