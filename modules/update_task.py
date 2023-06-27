@@ -1,9 +1,3 @@
-# TODO 
-# print all of the task names
-# allow user to put one of the tasks based on its name
-# print all of the task's elements
-# allow user to change what they want in the task
-# update the selected task in the dictionary
 import pyinputplus as pyip
 from modules.get_response import *
 from modules.reminder import *
