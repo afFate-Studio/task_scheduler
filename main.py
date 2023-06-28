@@ -26,7 +26,7 @@ def main():
         # checks to see if the latest task appended into the dictionary wants a reminder then sets it if it does
         if REMINDER == YES:
             Reminder(task=tasks_dict["Task" + str(LENGTH)], weeks=reminder_info[0], days=reminder_info[1], \
-                     hours=reminder_info[2], minutes=reminder_info[3], seconds=reminder_info[4]).job(tasks_dict=tasks_dict["Task" + str(LENGTH)])
+                     hours=reminder_info[2], minutes=reminder_info[3], seconds=reminder_info[4]).send_reminder_wrapper()
         
         # takes tasks_dict, sorts it by the 'priority' key then returns the value
         sorted_tasks_dict = sort(tasks_dict=tasks_dict)

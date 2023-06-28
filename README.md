@@ -13,9 +13,20 @@ how to run this program:
 
 pip install -r requirements.txt
 
-to save time, if you have a file to provide the following information in the initialize.ini
-full_file_path
-your_email (gmail)
+to use the reminder feature you will have to do the following:
+//////////////////////////////////////////////////// HOW TO: \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+//                                                                                                                                   \\
+// Make sure to replace the placeholder values in the credentials.json with the actual values corresponding to your service account  \\
+// You can obtain these values by following these steps:                                                                             \\
+//                                                                                                                                   \\
+// Go to the Google Cloud Console (https://console.cloud.google.com/).                                                               \\
+// Create a new project or select an existing project.                                                                               \\
+// Enable the Google Calendar API for your project.                                                                                  \\
+// Create a service account key for your project and download the JSON file.                                                         \\
+// Replace the placeholder values in the credentials.json file with the values from the downloaded JSON file.                        \\
+// Remember to keep your credentials.json file secure and avoid sharing it publicly or committing it to version control systems.     \\
+//                                                                                                                                   \\
+///////////////////////////////////////////////////////|\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 python menu.py
 or python3 menu.py
