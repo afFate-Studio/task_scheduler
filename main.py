@@ -49,15 +49,13 @@ def main():
                 # takes the the sorted task list, allows user to update it, then resorts it
                 sorted_tasks_dict = check_option(response=2, file_name=file_name, tasks_dict=sorted_tasks_dict)
 
-                """
-                    User is asked if they would like to email their task list
-                    if yes, email will be sent.
-                """
-                response = ask_user("\nWould you like to email your task list ( Y | N ): ") # prompts user asking if they would like to email their task list
-                if response == YES:
-                    # TODO allow user to send task list to email or export as txt
-                    # TODO allow user to use an initialize.ini to give their email
-                    Emailer(message=task) # checks response and sends on doesn't send email based on the response
+            """
+                User is asked if they would like to email their task list
+                if yes, email will be sent.
+            """
+            response = ask_user("\nWould you like to email your task list ( Y | N ): ") # prompts user asking if they would like to email their task list
+            if response == YES:
+                Emailer(textfile=file_name) # checks response and sends on doesn't send email based on the response
                     
             save_file(file_name=file_name, sorted_tasks_dict=sorted_tasks_dict)
 
